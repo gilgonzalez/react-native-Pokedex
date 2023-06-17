@@ -29,7 +29,6 @@ const StackNavigation = () => {
 
   return (
     <NavigationContainer
-
     >
       <Stack.Navigator
         screenOptions={{

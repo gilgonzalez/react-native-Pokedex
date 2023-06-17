@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "fonts/Pokemon.ttf",
+      "sha1": "0d9951d3380b31319e2de9546dfd96a399b56f71"
+    },
+    {
+      "path": "fonts/PokemonSolid.ttf",
+      "sha1": "604b78675e244487f0efd80662ac5b899353b80e"
+    }
+  ]
+}
