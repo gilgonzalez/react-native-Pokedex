@@ -4,6 +4,7 @@ import HomeScreen from '../screens/Home';
 import Pokemon from '../screens/Pokemon';
 
 import { NavigationContainer } from '@react-navigation/native';
+import { PokemonBasic } from '../interfaces/pokemon';
 
 export const enum StackScreens {
   HOME = 'Home',
@@ -13,7 +14,7 @@ export const enum StackScreens {
 
 export type RootStackParams = {
   [StackScreens.HOME] : { }
-  [StackScreens.POKEMON] : { }
+  [StackScreens.POKEMON] : { pokemon: PokemonBasic, color: string }
 
 }
 

@@ -4,6 +4,8 @@ import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Image } from 'rea
 import { FadeInImage } from './FadeInImage';
 import { getColors } from 'react-native-image-colors';
 import { useRef } from 'react';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootStackParams, StackScreens } from '../navigation/Navigator';
 
 interface Props {
 
@@ -17,6 +19,7 @@ const PokemonCard = ({ pokemon }: Props) => {
 
   const [bgColor, setBgColor] = useState('green');
   const isMounted = useRef(true);
+  const { navigate } = useNavigation<NavigationProp<RootStackParams>>();
 
   useEffect(() => {
     getColors(pokemon.picture, {
@@ -41,6 +44,7 @@ const PokemonCard = ({ pokemon }: Props) => {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
+      onPress={() => navigate(StackScreens.POKEMON, {pokemon, color :bgColor})}
     >
       <View
         style={{
@@ -48,7 +52,7 @@ const PokemonCard = ({ pokemon }: Props) => {
           backgroundColor: bgColor,
         }}
       >
-        <Text style={[styles.name, {fontFamily:'PokemonSolid'}]}>{pokemon.name} {'\n\n#' + pokemon.id}</Text>
+        <Text style={[styles.name, {fontFamily:'PokemonSolid'}]}>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} {'\n\n#' + pokemon.id}</Text>
         <FadeInImage
           uri={pokemon.picture}
           style={styles.pokemonImage}
@@ -94,7 +98,11 @@ const styles = StyleSheet.create({
     left: 10,
   },
   containerPokeball: {
-    flex: 1,
+    position: 'absolute',
+    height: 100,
+    width: 100,
+    right: 0,
+    bottom: 0,
     overflow: 'hidden',
   },
   pokeball: {
