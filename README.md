@@ -1,8 +1,8 @@
 # react-native-Pokedex
 Pokedex project with react native 
-![Muestra 1](https://raw.githubusercontent.com/gilgonzalez/react-native-Pokedez/main/asset/Captura.PNG)
-![Muestra 2](https://raw.githubusercontent.com/gilgonzalez/react-native-Pokedez/main/asset/Captura2.PNG)
-![Muestra 3](https://raw.githubusercontent.com/gilgonzalez/react-native-Pokedez/main/asset/Captura3.PNG)
+![Muestra 1](https://raw.githubusercontent.com/gilgonzalez/react-native-Pokedex/main/asset/Captura.PNG)
+![Muestra 2](https://raw.githubusercontent.com/gilgonzalez/react-native-Pokedex/main/asset/Captura2.PNG)
+![Muestra 3](https://raw.githubusercontent.com/gilgonzalez/react-native-Pokedex/main/asset/Captura3.PNG)
 
 #AÑADIR FONTS 
 ===============
