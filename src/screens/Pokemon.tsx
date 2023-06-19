@@ -40,7 +40,7 @@ const Pokemon = ({ navigation, route }: Props) => {
           />
         </View>
         <Text
-          style={ [styles.pokemonName, { top: top + height * 0.05 }] }
+          style={ [styles.pokemonName, { top: top + height * 0.05, color: 'black'}] }
         >{name.charAt(0).toUpperCase() + name.slice(1) + '\n'} # {id}</Text>
         <Image
           source={require('../assets/pokebola-blanca.png')}
@@ -74,7 +74,7 @@ export default Pokemon;
 
 const styles = StyleSheet.create({
   bgHeader: {
-    height: height * 0.4,
+    height: height * 0.3,
     zIndex: 999,
     borderBottomEndRadius: 1000,
     borderBottomStartRadius: 1000,
@@ -85,14 +85,15 @@ const styles = StyleSheet.create({
     left: 20,
   },
   pokemonName: {
-    color: 'rgba(255,255,255,0.9)',
     fontSize: 30,
     alignSelf: 'flex-start',
     fontFamily: 'PokemonSolid',
     left: 20,
-    letterSpacing:7,
+    letterSpacing: 7,
+    zIndex:999,
   },
   pokeball: {
+    position: 'absolute',
     width: 250,
     height: 250,
     opacity: 0.7,
@@ -101,8 +102,9 @@ const styles = StyleSheet.create({
     width: 225,
     height: 225,
     position: 'absolute',
-    top: 60,
-    right: 0,
+    top: 10,
+    right: -5,
+    zIndex: 999,
   },
   loadingIndicator: {
     flex: 1,

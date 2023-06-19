@@ -12,7 +12,7 @@ const colorStats = {
 };
 
 
-const Stats = ({ stat, key }: { stat: Stat, key: number }) => {
+const Stats = ({ stat, index }: { stat: Stat, index: number }) => {
   const getColorStat = () => {
     let color;
     if (stat.base_stat < 50) {
@@ -33,7 +33,7 @@ const Stats = ({ stat, key }: { stat: Stat, key: number }) => {
     }
     ;
   return (
-    <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%' }} key={key}>
+    <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%' }} key={index}>
       <Text style={{ color: '#212121', fontSize: 15, marginRight: 5 }}>{stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)}</Text>
       <View>
         <View style={{ width: stat.base_stat, backgroundColor: getColorStat(), height: 20, borderRadius: 5 }} >

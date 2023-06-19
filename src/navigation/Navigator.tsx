@@ -1,21 +1,21 @@
 import { StackScreenProps, createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import HomeScreen from '../screens/Home';
 import Pokemon from '../screens/Pokemon';
 
-import { NavigationContainer } from '@react-navigation/native';
 import { PokemonBasic } from '../interfaces/pokemon';
+import BottomTabs from './BottomTabs';
 
 export const enum StackScreens {
   HOME = 'Home',
   POKEMON = 'Pokemon',
+  TABSCREEN = 'TabScreen'
 
 }
 
 export type RootStackParams = {
   [StackScreens.HOME] : { }
-  [StackScreens.POKEMON] : { pokemon: PokemonBasic, color: string }
-
+  [StackScreens.POKEMON]: { pokemon: PokemonBasic, color: string }
+  [StackScreens.TABSCREEN]: {}
 }
 
 export type ScreenProps<T extends string> =
@@ -29,20 +29,17 @@ const Stack = createStackNavigator<RootStackParams>();
 const StackNavigation = () => {
 
   return (
-    <NavigationContainer
-    >
+
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
           cardStyle: {
-
           },
         }}
       >
-        <Stack.Screen name={StackScreens.HOME} component={HomeScreen} />
-        <Stack.Screen name={StackScreens.POKEMON} component={Pokemon} />
+      <Stack.Screen name={StackScreens.TABSCREEN} component={BottomTabs} />
+      <Stack.Screen name={StackScreens.POKEMON} component={Pokemon}  />
       </Stack.Navigator>
-    </NavigationContainer>
   );
 };
 

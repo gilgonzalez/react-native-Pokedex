@@ -10,10 +10,10 @@ import PokemonCard from '../components/PokemonCard';
 
 interface Props extends StackScreenProps<RootStackParams, StackScreens.HOME> { }
 
-const Home = ({ }: Props) => {
+const Home = () => {
   const { top } = useSafeAreaInsets();
 
-  const { basicPokemon, isLoading, loadPokemons } = usePokemonPaginated();
+  const { basicPokemon,  loadPokemons } = usePokemonPaginated();
 
   return (
     <>

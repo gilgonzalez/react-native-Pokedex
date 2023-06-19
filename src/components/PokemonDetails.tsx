@@ -35,7 +35,7 @@ const PokemonDetails = ({ pokemon, color }: Props) => {
     >
 
       <View
-        style={[styles.container, { marginTop: height * 0.45 }]}
+        style={[styles.container, { marginTop: height * 0.30 }]}
       >
         <View
           style={{
@@ -43,7 +43,6 @@ const PokemonDetails = ({ pokemon, color }: Props) => {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-around',
-            marginBottom: 20,
           }}
         >
           <View
@@ -62,10 +61,10 @@ const PokemonDetails = ({ pokemon, color }: Props) => {
         <Text style={styles.title}>Types </Text>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 10 }}>
           {
-            pokemon.types.map(({ type }, index) => (
+            pokemon.types.map(({ type }) => (
 
               <View
-                key={index}
+                key={type.name}
                 style={[styles.typeContainer, { backgroundColor: colourType[type.name] }]}
               >
                 <Text style={[styles.innerText]}>{type.name.charAt(0).toUpperCase() + type.name.slice(1)}</Text>
@@ -102,16 +101,16 @@ const PokemonDetails = ({ pokemon, color }: Props) => {
         <View style={{ flexWrap: 'wrap', gap: 10, marginTop: 10 }}>
           {
             pokemon.stats.map((stat, index) => (
-              <Stats stat={stat} key={index} />
+              <Stats stat={stat} index={ index} />
             ))
           }
         </View>
         <Text style={[styles.title]}>Habilities </Text>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 10 }}>
           {
-            pokemon.abilities.map(({ ability }, index) => (
+            pokemon.abilities.map(({ ability }) => (
               <View
-                key={index}
+                key={ability.name}
                 style={[styles.typeContainer, { backgroundColor: color }]}
               >
                 <Text style={[styles.innerText]}>{ability.name.charAt(0).toUpperCase() + ability.name.slice(1)}</Text>
@@ -124,8 +123,8 @@ const PokemonDetails = ({ pokemon, color }: Props) => {
         <View style={{ borderRadius: 10, marginTop: 10,backgroundColor: color + 80}} >
 
           {
-            levels.map(level => (
-              <View style={{
+            levels.map((level) => (
+              <View key={level} style={{
                 flexDirection: 'row',
                 padding: 10,
                 alignItems: 'center',
@@ -138,11 +137,10 @@ const PokemonDetails = ({ pokemon, color }: Props) => {
                   padding: 10,
                   gap: 5,
                   justifyContent: 'flex-end',
-
                 }}>
                 {
-                  moveList.filter(move => move.level === level).map(({ name }, index) => (
-                    <Movement key={index} name={name} color={color} />
+                  moveList.filter(move => move.level === level).map(({ name } ) => (
+                    <Movement key={name} name={name} color={color} />
                     ))}
 
               </View>
