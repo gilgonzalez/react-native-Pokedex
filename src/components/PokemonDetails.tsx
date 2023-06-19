@@ -19,8 +19,7 @@ const PokemonDetails = ({ pokemon, color }: Props) => {
 
   const levels = Array.from(
     new Set(
-      pokemon.moves.map(move => move.version_group_details[0].level_learned_at))).sort((a, b) => a - b);
-
+      pokemon.moves.map(move => move.version_group_details[0].level_learned_at))).sort((a, b) => a - b).slice(1);
   const moveList = pokemon.moves.map(move => {
     return {
       name: move.move.name,
@@ -122,20 +121,32 @@ const PokemonDetails = ({ pokemon, color }: Props) => {
           }
         </View>
         <Text style={[styles.title]}>Moves </Text>
-        <View style={{  gap: 10, marginTop: 10 }} >
+        <View style={{ borderRadius: 10, marginTop: 10,backgroundColor: color + 80}} >
 
           {
             levels.map(level => (
-              <>
-              <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Level {level}</Text>
-              <View style={{flexDirection:'row', flexWrap: 'wrap', gap: 10}}>
+              <View style={{
+                flexDirection: 'row',
+                padding: 10,
+                alignItems: 'center',
+              }}>
+              <Text style={{ fontSize: 18, fontWeight: 'bold', color:'white' }}>Level {level}</Text>
+                <View style={{
+                  flex:1,
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  padding: 10,
+                  gap: 5,
+                  justifyContent: 'flex-end',
+
+                }}>
                 {
                   moveList.filter(move => move.level === level).map(({ name }, index) => (
-                    <Movement key={index} name={name} level={ level} />
+                    <Movement key={index} name={name} color={color} />
                     ))}
 
               </View>
-              </>
+              </View>
             ))
           }
 
