@@ -4,6 +4,8 @@
 ![Muestra 2](https://raw.githubusercontent.com/gilgonzalez/react-native-Pokedex/main/asset/Captura1.PNG)
 ![Muestra 3](https://raw.githubusercontent.com/gilgonzalez/react-native-Pokedex/main/asset/Captura2.PNG)
 
+En el proyecto hay ejemplos de tab, stacks, animaciones, debounce, llamadas a API, manejo de datos etc
+
 #AÑADIR FONTS 
 ===============
 1. Create a fonts directory in your project's root directory.
