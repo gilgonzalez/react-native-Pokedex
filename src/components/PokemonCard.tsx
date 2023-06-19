@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { PokemonBasic } from '../interfaces/pokemon';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Image } from 'react-native';
-import { FadeInImage } from './FadeInImage';
 import { getColors } from 'react-native-image-colors';
 import { useRef } from 'react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParams, StackScreens } from '../navigation/Navigator';
+import { FadeInImageStatic } from './FadeInImageStatic';
 
 interface Props {
 
@@ -53,7 +53,7 @@ const PokemonCard = ({ pokemon }: Props) => {
         }}
       >
         <Text style={[styles.name, {fontFamily:'PokemonSolid'}]}>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} {'\n\n#' + pokemon.id}</Text>
-        <FadeInImage
+        <FadeInImageStatic
           uri={pokemon.picture}
           style={styles.pokemonImage}
         />

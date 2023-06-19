@@ -11,11 +11,12 @@ interface Props {
 
   pokemon: PokemonFull
   color: string
+  onScroll : (scrolled : boolean) => void
 }
 
 const height = Dimensions.get('window').height;
 
-const PokemonDetails = ({ pokemon, color }: Props) => {
+const PokemonDetails = ({ pokemon, color, onScroll }: Props) => {
 
   const levels = Array.from(
     new Set(
@@ -29,6 +30,14 @@ const PokemonDetails = ({ pokemon, color }: Props) => {
 
   return (
     <ScrollView
+      showsVerticalScrollIndicator={false}
+      onScroll={(e) => {
+        if (e.nativeEvent.contentOffset.y > 100) {
+          onScroll(true);
+        } else {
+          onScroll(false);
+        }
+      }}
       style={{
         ...StyleSheet.absoluteFillObject,
       }}

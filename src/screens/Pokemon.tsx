@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack';
-import React from 'react';
+import React, { useState } from 'react';
 import { Dimensions, StyleSheet, Text, View, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 import { RootStackParams, StackScreens } from '../navigation/Navigator';
 import  Icon  from 'react-native-vector-icons/Ionicons';
@@ -17,6 +17,7 @@ const height = Dimensions.get('window').height;
 const Pokemon = ({ navigation, route }: Props) => {
   const { top } = useSafeAreaInsets();
   const { pokemon: { name, id, picture }, color } = route.params;
+  const [scrolled, setScrolled] = useState(false);
   const { pokemon, isLoading } = usePokemon({ id });
   const uriGif = `https://projectpokemon.org/images/normal-sprite/${name === 'mr-mime' ? 'mr.mime' : name}.gif`;
   return (
@@ -32,7 +33,7 @@ const Pokemon = ({ navigation, route }: Props) => {
           <Icon name="chevron-back-circle-outline" size={30} color="white" />
         </TouchableOpacity>
         <View
-          style={{ position:'absolute',left:60, top: top + 140, zIndex:2}}
+          style={{ position:'absolute',left:60, top: top + 140, zIndex:2, opacity: scrolled ? 0 : 1}}
         >
           <AutoHeightImage
             width={75}
@@ -40,7 +41,7 @@ const Pokemon = ({ navigation, route }: Props) => {
           />
         </View>
         <Text
-          style={ [styles.pokemonName, { top: top + height * 0.05, color: 'black'}] }
+          style={[styles.pokemonName, { top: top + height * 0.05, color: 'black', display: scrolled ? 'none' : 'flex'}] }
         >{name.charAt(0).toUpperCase() + name.slice(1) + '\n'} # {id}</Text>
         <Image
           source={require('../assets/pokebola-blanca.png')}
@@ -49,7 +50,8 @@ const Pokemon = ({ navigation, route }: Props) => {
 
         <FadeInImage
           uri={picture}
-          style={styles.pokemonImage}
+          scrolled={scrolled}
+          style={{...styles.pokemonImage}}
         />
       </View>
       {
@@ -63,7 +65,7 @@ const Pokemon = ({ navigation, route }: Props) => {
             />
           </View>)
           : (
-            <PokemonDetails pokemon={pokemon} color={color}/>
+            <PokemonDetails pokemon={pokemon} color={color} onScroll={ setScrolled } />
           )
       }
     </View>
@@ -99,8 +101,8 @@ const styles = StyleSheet.create({
     opacity: 0.7,
   },
   pokemonImage: {
-    width: 225,
-    height: 225,
+    width: 200,
+    height: 200,
     position: 'absolute',
     top: 10,
     right: -5,
